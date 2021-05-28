@@ -216,12 +216,13 @@ public class register extends javax.swing.JFrame {
 //------------------------------------use if statement for data validation-----------------------------------------------------------
         
         try {
-            Class.forName("com.mysql.jbdc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/chumaxonics","roots","");
+            Class.forName("java.sql.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost/chumaxonics","root","");
             
-            
+
             insert =conn.prepareStatement("insert into record(name,mobile,course)values(?,?,?)");
             
+         
             //we have to use the index to pass the values into our desired position*variables
             insert.setString(1, name);
             insert.setString(2, mobile);
