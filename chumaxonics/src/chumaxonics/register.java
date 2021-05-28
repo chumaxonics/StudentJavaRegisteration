@@ -93,6 +93,11 @@ public class register extends javax.swing.JFrame {
         jButton3.setBackground(new java.awt.Color(51, 153, 0));
         jButton3.setForeground(new java.awt.Color(255, 0, 204));
         jButton3.setText("Edit");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setBackground(new java.awt.Color(51, 153, 0));
         jButton4.setForeground(new java.awt.Color(255, 0, 204));
@@ -229,7 +234,7 @@ public class register extends javax.swing.JFrame {
 
     
         Connection conn;
-        PreparedStatement insert, update;
+        PreparedStatement insert, update,ChangeData;
 
        private void tableDetails(){
            
@@ -348,6 +353,56 @@ public class register extends javax.swing.JFrame {
             txtstudentnumber.setText( Dfobject.getValueAt(selectedIndex,4).toString());
             txtnationality.setText( Dfobject.getValueAt(selectedIndex,5).toString());
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel Dfobject =(DefaultTableModel)jTable1.getModel();
+        int selectedIndex = jTable1.getSelectedRow();
+        
+        
+         try {         
+             
+        int databaseId = Integer.parseInt(Dfobject.getValueAt(selectedIndex, 0).toString());
+             
+        String name = txtname.getText();
+        String mobile= txtmobile.getText();
+        String course =txtcourse.getText();
+        String studentnumber =txtstudentnumber.getText();
+        String nationality =txtnationality.getText();
+            
+            Class.forName("java.sql.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost/chumaxonics","root","");     
+
+            ChangeData =conn.prepareStatement("update record set name=?,mobile=?,course=?,studentnumber=?,nationality=? where id=?");
+            
+         
+            //we have to use the index to pass the values into our desired position*variables
+            ChangeData.setString(1, name);
+            ChangeData.setString(2, mobile);
+            ChangeData.setString(3, course);
+            ChangeData.setString(4, studentnumber);
+            ChangeData.setString(5, nationality);
+            ChangeData.setInt(6, databaseId); // the initialized Idfrom Database
+            //execute the query below .. 
+            ChangeData.executeUpdate();
+            
+            // if the data is added, we need to know
+            JOptionPane.showMessageDialog(this, "The information was updated successfully");
+            tableDetails();// Calling the method after adding information into the Database 
+            
+            //after adding the information, set text to empty on the inputs _ GUI
+            txtname.setText("");
+            txtmobile.setText("");
+            txtcourse.setText("");
+            txtstudentnumber.setText("");
+            txtnationality.setText("");
+      
+        } catch (ClassNotFoundException | SQLException ex) {
+            
+            Logger.getLogger(register.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
