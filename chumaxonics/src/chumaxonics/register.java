@@ -5,6 +5,7 @@
  */
 package chumaxonics;
 
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,6 +13,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.DriverManager;
 import javax.swing.JOptionPane;
+//import javax.swing.table.DefaultTableColumnModel;
+import java.sql.ResultSet; //check it 
+import javax.swing.table.DefaultTableModel;
+ 
 /**
  *
  * @author Chumaxonics
@@ -197,6 +202,35 @@ public class register extends javax.swing.JFrame {
     
         Connection conn;
         PreparedStatement insert;
+        
+        
+        void tableDetails(){
+           
+         int cout; 
+         
+         try {
+             
+            Class.forName("java.sql.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost/chumaxonics","root","");
+            
+            insert =conn.prepareStatement("select*from record");
+            ResultSet results =insert.executeQuery();
+            ResultSetMetaData Rss =results.getMetaData();
+         /*getMetadata*/   
+         
+         cout =Rss.getColumnCount();
+         
+             DefaultTableModel Drobject =(DefaultTableModel)jTable1.getModel();
+             Drobject.setRowCount(0);
+             
+         } catch (ClassNotFoundException | SQLException ex) {
+            
+            Logger.getLogger(register.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+       } 
+        
+        
     
     private void txtnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnameActionPerformed
         // TODO add your handling code here:
@@ -235,6 +269,12 @@ public class register extends javax.swing.JFrame {
             // if the data is added, we need to know
             JOptionPane.showMessageDialog(this, "The information was added successfully");
             
+            //after adding the information, set text to empty on the inputs _ GUI
+            txtname.setText("");
+            txtmobile.setText("");
+            txtcourse.setText("");
+            
+      
         } catch (ClassNotFoundException | SQLException ex) {
             
             Logger.getLogger(register.class.getName()).log(Level.SEVERE, null, ex);
