@@ -5,9 +5,12 @@
  */
 package chumaxonics;
 
-import com.mysql.jdbc.Connection;
+import java.sql.SQLException;
+import java.sql.Connection;
 import com.mysql.jdbc.PreparedStatement;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.sql.DriverManager;
 /**
  *
  * @author Chumaxonics
@@ -208,7 +211,17 @@ public class register extends javax.swing.JFrame {
         Connection conn;
         PreparedStatement insert;
         
-        
+        try {
+            Class.forName("com.mysql.jbdc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost/chumaxonics","root","");
+        } catch (ClassNotFoundException ex) {
+            
+            Logger.getLogger(register.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         catch (SQLException ex) {
+            
+            Logger.getLogger(register.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
