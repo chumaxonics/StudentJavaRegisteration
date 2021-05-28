@@ -5,6 +5,9 @@
  */
 package chumaxonics;
 
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.PreparedStatement;
+
 /**
  *
  * @author Chumaxonics
@@ -197,6 +200,16 @@ public class register extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        // The variables are declared to catch information entered by the user in our GUI
+        String name = txtname.getText();
+        String mobile= txtmobile.getText();
+        String course =txtcourse.getText();
+        
+        Connection conn;
+        PreparedStatement insert;
+        
+        
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
