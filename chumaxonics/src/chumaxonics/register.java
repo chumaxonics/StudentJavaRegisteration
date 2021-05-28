@@ -266,6 +266,7 @@ public class register extends javax.swing.JFrame {
 //------------------------------------use if statement for data validation-----------------------------------------------------------
         
         try {
+            
             Class.forName("java.sql.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost/chumaxonics","root","");
             
@@ -283,6 +284,7 @@ public class register extends javax.swing.JFrame {
             
             // if the data is added, we need to know
             JOptionPane.showMessageDialog(this, "The information was added successfully");
+            tableDetails();// Calling the method after adding information into the Database 
             
             //after adding the information, set text to empty on the inputs _ GUI
             txtname.setText("");
