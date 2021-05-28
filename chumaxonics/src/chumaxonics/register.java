@@ -284,6 +284,52 @@ public class register extends javax.swing.JFrame {
     }//GEN-LAST:event_txtnameActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+DefaultTableModel Dfobject =(DefaultTableModel)jTable1.getModel();
+        int selectedIndex = jTable1.getSelectedRow();
+        
+        
+         try {         
+             
+        int databaseId = Integer.parseInt(Dfobject.getValueAt(selectedIndex, 0).toString());
+        
+        int checkdelete = JOptionPane.showConfirmDialog(null,"Do you want to delete the data ?","warning",JOptionPane.YES_NO_OPTION);
+        
+             if (checkdelete==JOptionPane.YES_OPTION) {
+                 
+            Class.forName("java.sql.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost/chumaxonics","root","");     
+
+            ChangeData =conn.prepareStatement("delete from record where id=?");
+            
+           // ChangeData.setInt(6, databaseId); // the initialized Idfrom Database
+            
+            //execute the query below .. 
+            ChangeData.executeUpdate();
+            
+            // if the data is added, we need to know
+            JOptionPane.showMessageDialog(this, "The information was deleted successfully");
+            tableDetails();// Calling the method after adding information into the Database 
+            
+            //after adding the information, set text to empty on the inputs _ GUI
+            txtname.setText("");
+            txtmobile.setText("");
+            txtcourse.setText("");
+            txtstudentnumber.setText("");
+            txtnationality.setText("");
+             } else {
+             
+              JOptionPane.showMessageDialog(this, " You decided not to delete information");
+             
+             }
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            
+            Logger.getLogger(register.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
+
+
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -354,6 +400,8 @@ public class register extends javax.swing.JFrame {
             txtnationality.setText( Dfobject.getValueAt(selectedIndex,5).toString());
     }//GEN-LAST:event_jTable1MouseClicked
 
+    
+    // Edit button fiunctionality coded here.. . 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         DefaultTableModel Dfobject =(DefaultTableModel)jTable1.getModel();
