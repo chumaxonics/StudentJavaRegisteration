@@ -7,7 +7,7 @@ package chumaxonics;
 
 import java.sql.SQLException;
 import java.sql.Connection;
-import com.mysql.jdbc.PreparedStatement;
+import java.sql.PreparedStatement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.DriverManager;
@@ -193,6 +193,10 @@ public class register extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    
+        Connection conn;
+        PreparedStatement insert;
+    
     private void txtnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtnameActionPerformed
@@ -208,12 +212,24 @@ public class register extends javax.swing.JFrame {
         String mobile= txtmobile.getText();
         String course =txtcourse.getText();
         
-        Connection conn;
-        PreparedStatement insert;
+
         
         try {
             Class.forName("com.mysql.jbdc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost/chumaxonics","root","");
+            
+            
+            insert =conn.prepareStatement("insert into record(name,mobile,course)values(?,?,?)");
+            
+            //we have to use the index to pass the values into our desired position*variables
+            insert.setString(1, name);
+            insert.setString(2, mobile);
+            insert.setString(3, course);
+            
+            //execute the query below .. 
+            insert.executeUpdate();
+            
+            
         } catch (ClassNotFoundException ex) {
             
             Logger.getLogger(register.class.getName()).log(Level.SEVERE, null, ex);
