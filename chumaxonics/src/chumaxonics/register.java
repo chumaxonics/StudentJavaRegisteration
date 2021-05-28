@@ -224,9 +224,8 @@ public class register extends javax.swing.JFrame {
 
     
         Connection conn;
-        PreparedStatement insert;
-        
-        
+        PreparedStatement insert, update;
+
        private void tableDetails(){
            
          int cout; 
@@ -236,8 +235,8 @@ public class register extends javax.swing.JFrame {
             Class.forName("java.sql.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost/chumaxonics","root","");
             
-            insert =conn.prepareStatement("select*from record");
-            ResultSet results =insert.executeQuery();
+            update =conn.prepareStatement("select*from record");
+            ResultSet results =update.executeQuery();
             ResultSetMetaData Rss =results.getMetaData();
          /*getMetadata*/   
          
