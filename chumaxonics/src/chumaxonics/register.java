@@ -234,15 +234,13 @@ public class register extends javax.swing.JFrame {
             // if the data is added, we need to know
             JOptionPane.showMessageDialog(this, "The information was added successfully");
             
-        } catch (ClassNotFoundException ex) {
-            
-            Logger.getLogger(register.class.getName()).log(Level.SEVERE, null, ex);
-        }
-         catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             
             Logger.getLogger(register.class.getName()).log(Level.SEVERE, null, ex);
         }
         //-----------------------------------------------------------------------------------------------
+
+       
         
         
     }//GEN-LAST:event_jButton2ActionPerformed
