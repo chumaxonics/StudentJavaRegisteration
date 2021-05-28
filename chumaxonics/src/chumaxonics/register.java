@@ -185,6 +185,11 @@ public class register extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -328,6 +333,20 @@ public class register extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        
+        DefaultTableModel Dfobject =(DefaultTableModel)jTable1.getModel();
+        
+            int selectedIndex = jTable1.getSelectedRow();
+  
+            txtname.setText( Dfobject.getValueAt(selectedIndex,1).toString());
+            txtmobile.setText( Dfobject.getValueAt(selectedIndex,2).toString());
+            txtcourse.setText( Dfobject.getValueAt(selectedIndex,3).toString());
+            txtstudentnumber.setText( Dfobject.getValueAt(selectedIndex,4).toString());
+            txtnationality.setText( Dfobject.getValueAt(selectedIndex,5).toString());
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
