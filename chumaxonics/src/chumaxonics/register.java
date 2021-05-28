@@ -15,6 +15,7 @@ import java.sql.DriverManager;
 import javax.swing.JOptionPane;
 //import javax.swing.table.DefaultTableColumnModel;
 import java.sql.ResultSet; //check it 
+import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
  
 /**
@@ -28,6 +29,7 @@ public class register extends javax.swing.JFrame {
      */
     public register() {
         initComponents();
+        tableDetails();
     }
 
     /**
@@ -204,7 +206,7 @@ public class register extends javax.swing.JFrame {
         PreparedStatement insert;
         
         
-        void tableDetails(){
+       private void tableDetails(){
            
          int cout; 
          
@@ -220,8 +222,21 @@ public class register extends javax.swing.JFrame {
          
          cout =Rss.getColumnCount();
          
-             DefaultTableModel Drobject =(DefaultTableModel)jTable1.getModel();
-             Drobject.setRowCount(0);
+             DefaultTableModel Dfobject =(DefaultTableModel)jTable1.getModel();
+             Dfobject.setRowCount(0);
+             
+             while (results.next()) {
+                 
+                 Vector vector_one = new Vector();
+                 
+                 for (int i = 0; i < cout; i++) {   
+                     vector_one.add(results.getString("id"));
+                     vector_one.add(results.getString("name"));
+                     vector_one.add(results.getString("mobile"));
+                     vector_one.add(results.getString("course"));
+                 }
+                 Dfobject.addRow(vector_one);
+             }
              
          } catch (ClassNotFoundException | SQLException ex) {
             
