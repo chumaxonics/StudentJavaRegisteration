@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.DriverManager;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Chumaxonics
@@ -212,11 +213,11 @@ public class register extends javax.swing.JFrame {
         String mobile= txtmobile.getText();
         String course =txtcourse.getText();
         
-
+//------------------------------------use if statement for data validation-----------------------------------------------------------
         
         try {
             Class.forName("com.mysql.jbdc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/chumaxonics","root","");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost/chumaxonics","roots","");
             
             
             insert =conn.prepareStatement("insert into record(name,mobile,course)values(?,?,?)");
@@ -229,6 +230,8 @@ public class register extends javax.swing.JFrame {
             //execute the query below .. 
             insert.executeUpdate();
             
+            // if the data is added, we need to know
+            JOptionPane.showMessageDialog(this, "The information was added successfully");
             
         } catch (ClassNotFoundException ex) {
             
@@ -238,6 +241,8 @@ public class register extends javax.swing.JFrame {
             
             Logger.getLogger(register.class.getName()).log(Level.SEVERE, null, ex);
         }
+        //-----------------------------------------------------------------------------------------------
+        
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
