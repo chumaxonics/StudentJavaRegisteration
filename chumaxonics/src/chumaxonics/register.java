@@ -301,7 +301,7 @@ DefaultTableModel Dfobject =(DefaultTableModel)jTable1.getModel();
 
             ChangeData =conn.prepareStatement("delete from record where id=?");
             
-           // ChangeData.setInt(6, databaseId); // the initialized Idfrom Database
+            ChangeData.setInt(1, databaseId); // the initialized Idfrom Database
             
             //execute the query below .. 
             ChangeData.executeUpdate();
