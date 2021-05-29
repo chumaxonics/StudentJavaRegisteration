@@ -172,7 +172,7 @@ public class Login extends javax.swing.JFrame {
             
                  if (result.next()) {
                      
-                      JOptionPane.showMessageDialog(this, "You have login successfully as"+"usertype");
+                      JOptionPane.showMessageDialog(this, "You have login successfully as"+ " usertype");
                  }
                  
                  switch (loginCombo.getSelectedIndex()) {
@@ -189,10 +189,6 @@ public class Login extends javax.swing.JFrame {
                      default:
                          break;
                  }
- 
-            
-            // if the data is added, we need to know
-            JOptionPane.showMessageDialog(this, "The information was added successfully");
         
              }catch (ClassNotFoundException | SQLException ex) {
             
