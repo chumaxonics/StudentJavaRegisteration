@@ -34,7 +34,7 @@ public class studentRegister extends javax.swing.JFrame {
     
     
      Connection conn;
-     PreparedStatement insert, update,ChangeData;
+     PreparedStatement insert, taketouserTable;
      
      
      
@@ -329,14 +329,27 @@ public class studentRegister extends javax.swing.JFrame {
             insert.setString(5, gender);
             insert.setString(6, email);
             insert.setString(7, mobilenumber);
-             insert.setString(8, province);
+            insert.setString(8, province);
             //execute the query below .. 
             insert.executeUpdate();
             
             // if the data is added, we need to know
-            JOptionPane.showMessageDialog(this, "The information was added successfully");
-             
-            
+
+             if (insert.executeUpdate()>0) {
+
+                 //this is chaeeting
+                 String student ="student";
+                 JOptionPane.showMessageDialog(this, "The information was added successfully");
+                 taketouserTable =conn.prepareStatement("insert into multiuser(username,password,usertype)values(?,?,?)");
+                 taketouserTable.setString(1, username);
+                 taketouserTable.setString(2, password);
+                 taketouserTable.setString(3, student);
+                 taketouserTable.executeUpdate();
+                 
+             } else {
+                 
+                 
+             }
             //after adding the information, set text to empty on the inputs _ GUI
             txtmobile.setText("");
             txtemail.setText("");
