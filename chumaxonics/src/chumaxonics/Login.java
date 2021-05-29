@@ -150,10 +150,7 @@ public class Login extends javax.swing.JFrame {
    
          String username = txtusername.getText().trim();
          String password= txtpassword.getText().trim();
-        
-         
-        
-//------------------------------------use if statement for data validation-----------------------------------------------------------
+
         if ( !(username.isEmpty()) && !(password.isEmpty())) {
 
              try {
