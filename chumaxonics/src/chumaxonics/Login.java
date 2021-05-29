@@ -8,6 +8,9 @@ package chumaxonics;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -152,25 +155,28 @@ public class Login extends javax.swing.JFrame {
 //------------------------------------use if statement for data validation-----------------------------------------------------------
         if ( !(username.isEmpty()) && !(password.isEmpty())) {
 
-            
+             try {
             Class.forName("java.sql.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost/chumaxonics","root","");
 
             selectData =conn.prepareStatement("insert into record(name,mobile,course,studentnumber,nationality)values(?,?,?,?,?)");
 
             //we have to use the index to pass the values into our desired position*variables
-            selectData.setString(1, name);
-            selectData.setString(2, mobile);
-            selectData.setString(3, course);
-            selectData.setString(4, studentnumber);
-            selectData.setString(5, nationality);
+            selectData.setString(1, username);
+            selectData.setString(2, password);
+            selectData.setString(3, String.valueOf(loginCombo.getSelectedItem()));
+ ;
             //execute the query below .. 
             selectData.executeUpdate();
             
             // if the data is added, we need to know
             JOptionPane.showMessageDialog(this, "The information was added successfully");
         
-        
+             }catch (ClassNotFoundException | SQLException ex) {
+            
+            Logger.getLogger(register.class.getName()).log(Level.SEVERE, null, ex);
+        }
+ 
         
         }else {
         JOptionPane.showMessageDialog(this, "Please enter your login details");
