@@ -192,6 +192,9 @@ public class Login extends javax.swing.JFrame {
                  } else{
                      
                  JOptionPane.showMessageDialog(this, "incorrect inputs, please try again");
+                 //empty the environment
+               txtusername.setText("");
+               txtpassword.setText("");
                  }
  
              }catch (ClassNotFoundException | SQLException ex) {
