@@ -319,17 +319,17 @@ public class studentRegister extends javax.swing.JFrame {
             Class.forName("java.sql.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost/chumaxonics","root","");
 
-            insert =conn.prepareStatement("insert into record(firstname,lastname,username,password,gender,email,mobilenumber,province)values(?,?,?,?,?,?,?,?)");
+            insert =conn.prepareStatement("insert into studentregistration(firstname,lastname,username,password,gender,email,mobilenumber,province)values(?,?,?,?,?,?,?,?)");
 
             //we have to use the index to pass the values into our desired position*variables
-            insert.setString(0, firstname);
-            insert.setString(1, lastname);
-            insert.setString(2, username);
-            insert.setString(3, password);
-            insert.setString(4, gender);
-            insert.setString(5, email);
-            insert.setString(6, mobilenumber);
-             insert.setString(7, province);
+            insert.setString(1, firstname);
+            insert.setString(2, lastname);
+            insert.setString(3, username);
+            insert.setString(4, password);
+            insert.setString(5, gender);
+            insert.setString(6, email);
+            insert.setString(7, mobilenumber);
+             insert.setString(8, province);
             //execute the query below .. 
             insert.executeUpdate();
             
