@@ -343,6 +343,16 @@ DefaultTableModel Dfobject =(DefaultTableModel)jTable1.getModel();
         String nationality =txtnationality.getText();
         
 //------------------------------------use if statement for data validation-----------------------------------------------------------
+        if ( !(name.isEmpty()) || !(mobile.isEmpty()) ||!(course.isEmpty())||!(studentnumber.isEmpty())||!(nationality.isEmpty())) {
+            
+            
+            
+        } else {
+            
+            
+        }
+        
+        
         
         try {
             
