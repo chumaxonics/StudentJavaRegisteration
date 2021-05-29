@@ -345,15 +345,6 @@ DefaultTableModel Dfobject =(DefaultTableModel)jTable1.getModel();
 //------------------------------------use if statement for data validation-----------------------------------------------------------
         if ( !(name.isEmpty()) || !(mobile.isEmpty()) ||!(course.isEmpty())||!(studentnumber.isEmpty())||!(nationality.isEmpty())) {
             
-            
-            
-        } else {
-            
-            
-        }
-        
-        
-        
         try {
             
             Class.forName("java.sql.Driver");
@@ -388,6 +379,16 @@ DefaultTableModel Dfobject =(DefaultTableModel)jTable1.getModel();
             Logger.getLogger(register.class.getName()).log(Level.SEVERE, null, ex);
         }
         //-----------------------------------------------------------------------------------------------
+            
+        } else {
+            
+            JOptionPane.showMessageDialog(this, "Please make sure that you enter all the details before adding");
+            
+        }
+        
+        
+        
+
 
        
         
