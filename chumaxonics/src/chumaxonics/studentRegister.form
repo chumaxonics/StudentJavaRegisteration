@@ -297,7 +297,7 @@
                 <StringItem index="6" value="Free State"/>
                 <StringItem index="7" value="Eastern Cape"/>
                 <StringItem index="8" value="Northern Cape"/>
-                <StringItem index="9" value="South Africa"/>
+                <StringItem index="9" value=" "/>
               </StringArray>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
