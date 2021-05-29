@@ -333,12 +333,6 @@ public class register extends javax.swing.JFrame {
             
             JOptionPane.showMessageDialog(this, " Please select a row before deleting");
         }
-        
-        
-        
-
-
-
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -360,11 +354,9 @@ public class register extends javax.swing.JFrame {
             
             Class.forName("java.sql.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost/chumaxonics","root","");
-            
 
             insert =conn.prepareStatement("insert into record(name,mobile,course,studentnumber,nationality)values(?,?,?,?,?)");
-            
-         
+
             //we have to use the index to pass the values into our desired position*variables
             insert.setString(1, name);
             insert.setString(2, mobile);
