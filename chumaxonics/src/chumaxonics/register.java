@@ -283,11 +283,14 @@ public class register extends javax.swing.JFrame {
     }//GEN-LAST:event_txtnameActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-DefaultTableModel Dfobject =(DefaultTableModel)jTable1.getModel();
+
+        
+        DefaultTableModel Dfobject =(DefaultTableModel)jTable1.getModel();
         int selectedIndex = jTable1.getSelectedRow();
         
-        
-         try {         
+        if (selectedIndex > 0) {
+            
+    try {         
              
         int databaseId = Integer.parseInt(Dfobject.getValueAt(selectedIndex, 0).toString());
         
@@ -325,6 +328,14 @@ DefaultTableModel Dfobject =(DefaultTableModel)jTable1.getModel();
             
             Logger.getLogger(register.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        } else {
+            
+            JOptionPane.showMessageDialog(this, " Please select a row before deleting");
+        }
+        
+        
+        
 
 
 
