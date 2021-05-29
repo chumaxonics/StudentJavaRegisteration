@@ -154,6 +154,7 @@ public class Login extends javax.swing.JFrame {
         if ( !(username.isEmpty()) && !(password.isEmpty())) {
 
              try {
+                 
             Class.forName("java.sql.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost/chumaxonics","root","");
             String query = "select*from multiuser where username =? and password =? and usertype=? ";
@@ -163,13 +164,18 @@ public class Login extends javax.swing.JFrame {
             selectData.setString(1, username);
             selectData.setString(2, password);
             selectData.setString(3, String.valueOf(loginCombo.getSelectedItem()));
- ;
+ 
             //execute the query below .. 
             ResultSet result = selectData.executeQuery();
             
                  if (result.next()) {
                      
-                      JOptionPane.showMessageDialog(this, "You have login successfully as"+ " usertype");
+                      JOptionPane.showMessageDialog(this, "You have login successfully as"+ result.getString("usertype"));
+                      
+                      
+                 } else{
+                     
+                 JOptionPane.showMessageDialog(this, "incorrect inputs, please try again");
                  }
                  
                  switch (loginCombo.getSelectedIndex()) {
@@ -186,6 +192,8 @@ public class Login extends javax.swing.JFrame {
                      default:
                          break;
                  }
+                 
+                   
         
              }catch (ClassNotFoundException | SQLException ex) {
             
