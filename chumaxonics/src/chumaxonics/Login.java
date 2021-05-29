@@ -171,19 +171,19 @@ public class Login extends javax.swing.JFrame {
               result = selectData.executeQuery();
             
                  if (result.next()) {
-                     
-          JOptionPane.showMessageDialog(this, "You have login successfully as"+ result.getString("usertype"));
-                      
+           
           switch (loginCombo.getSelectedIndex()) {
                      case 0:
                          admin obj =new admin();
                          obj.setVisible(true);
                          this.setVisible(false);
+                         JOptionPane.showMessageDialog(this, "You have login successfully as "+ result.getString("usertype"));
                          break;
                      case 1:
                          student obj2 = new student();
                          obj2.setVisible(true);
                          this.setVisible(false);
+                         JOptionPane.showMessageDialog(this, "You have login successfully as "+ result.getString("usertype"));
                          break;
                      default:
                          break;
