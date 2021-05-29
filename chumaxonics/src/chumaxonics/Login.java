@@ -177,12 +177,14 @@ public class Login extends javax.swing.JFrame {
                          admin obj =new admin();
                          obj.setVisible(true);
                          this.setVisible(false);
+                         //change and display on the admin page
                          JOptionPane.showMessageDialog(this, "You have login successfully as "+ result.getString("usertype"));
                          break;
                      case 1:
                          student obj2 = new student();
                          obj2.setVisible(true);
                          this.setVisible(false);
+                         //change and display on the student page
                          JOptionPane.showMessageDialog(this, "You have login successfully as "+ result.getString("usertype"));
                          break;
                      default:
