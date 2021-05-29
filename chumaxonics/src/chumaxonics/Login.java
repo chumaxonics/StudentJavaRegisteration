@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 /**
@@ -158,8 +159,8 @@ public class Login extends javax.swing.JFrame {
              try {
             Class.forName("java.sql.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost/chumaxonics","root","");
-
-            selectData =conn.prepareStatement("insert into record(name,mobile,course,studentnumber,nationality)values(?,?,?,?,?)");
+            String query = "select*from multiuser where username =? and password =? and usertype=? ";
+            selectData =conn.prepareStatement(query);
 
             //we have to use the index to pass the values into our desired position*variables
             selectData.setString(1, username);
@@ -167,7 +168,28 @@ public class Login extends javax.swing.JFrame {
             selectData.setString(3, String.valueOf(loginCombo.getSelectedItem()));
  ;
             //execute the query below .. 
-            selectData.executeUpdate();
+            ResultSet result = selectData.executeQuery();
+            
+                 if (result.next()) {
+                     
+                      JOptionPane.showMessageDialog(this, "You have login successfully as"+"usertype");
+                 }
+                 
+                 switch (loginCombo.getSelectedIndex()) {
+                     case 0:
+                         admin obj =new admin();
+                         obj.setVisible(true);
+                         this.setVisible(false);
+                         break;
+                     case 1:
+                         student obj2 = new student();
+                         obj2.setVisible(true);
+                         this.setVisible(false);
+                         break;
+                     default:
+                         break;
+                 }
+ 
             
             // if the data is added, we need to know
             JOptionPane.showMessageDialog(this, "The information was added successfully");
