@@ -60,6 +60,7 @@ public class register extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Registration");
 
         jLabel1.setBackground(new java.awt.Color(0, 204, 204));
         jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 24)); // NOI18N
@@ -135,11 +136,10 @@ public class register extends javax.swing.JFrame {
                         .addGap(82, 82, 82)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(txtnationality, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtname)
-                                .addComponent(txtmobile)
-                                .addComponent(txtcourse)
-                                .addComponent(txtstudentnumber, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)))))
+                            .addComponent(txtname, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtmobile, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtcourse, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtstudentnumber, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE))))
                 .addContainerGap(118, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
