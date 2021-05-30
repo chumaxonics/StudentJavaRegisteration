@@ -38,7 +38,7 @@ public class student extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(40, 164, 218));
         jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Student Inforrmation");
+        jLabel1.setText("Student Information");
         jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
