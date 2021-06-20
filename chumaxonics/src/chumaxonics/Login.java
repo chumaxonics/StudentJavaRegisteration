@@ -222,7 +222,7 @@ public class Login extends javax.swing.JFrame {
             //execute the query below .. 
               result = selectData.executeQuery();
             
-                 if (result.next()) {
+          if (result.next()) { // if we get results from database, do the following
            
           switch (loginCombo.getSelectedIndex()) {
                      case 0:
@@ -240,6 +240,7 @@ public class Login extends javax.swing.JFrame {
                          JOptionPane.showMessageDialog(this, "You have login successfully as "+ result.getString("usertype"));
                          break;
                      default:
+                         JOptionPane.showMessageDialog(this, "Invalid Selection, please try again");
                          break;
                  }//switch ends here 
 
