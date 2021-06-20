@@ -331,7 +331,7 @@ public class studentRegister extends javax.swing.JFrame {
             insert.setString(7, mobilenumber);
             insert.setString(8, province);
             //execute the query below .. 
-            insert.executeUpdate();
+            //insert.executeUpdate();
             
             // if the data is added, we need to know
 
