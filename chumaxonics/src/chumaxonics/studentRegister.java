@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -302,16 +303,19 @@ public class studentRegister extends javax.swing.JFrame {
         
         
                 // The variables are declared to catch information entered by the user in our GUI
-        String firstname = txtfirstname.getText();
-        String username = txtusername.getText();
-        String mobilenumber= txtmobile.getText();
-        String lastname =txtlastname.getText();
-        String password =txtpassword.getText();
-        String gender =txtgender.getText();
-        String email =txtemail.getText();
+        String firstname = txtfirstname.getText().trim();
+        String username = txtusername.getText().trim();
+        String mobilenumber= txtmobile.getText().trim();
+        String lastname =txtlastname.getText().trim();
+        String password =txtpassword.getText().trim();
+        String gender =txtgender.getText().trim();
+        String email =txtemail.getText().trim();
         String province =String.valueOf(txtComboBox.getSelectedItem());
         
 //------------------------------------use if statement for data validation-----------------------------------------------------------
+if (Pattern.matches("^[0-9]+$", mobilenumber)) {
+            
+
         if ( !(username.isEmpty()) && !(mobilenumber.isEmpty()) && !(lastname.isEmpty())&& !(password.isEmpty())&& !(gender.isEmpty())&& !(email.isEmpty())&& !(province.isEmpty())&&!(firstname.isEmpty())) {
             
          try {
@@ -363,6 +367,10 @@ public class studentRegister extends javax.swing.JFrame {
         }else{
          JOptionPane.showMessageDialog(this, "Please enter all your details to register");
         }
+        
+}else{
+ JOptionPane.showMessageDialog(this, "Invalid format, please use numbers for mobile");
+}
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
